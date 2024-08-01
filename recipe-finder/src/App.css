@@ -28,8 +28,9 @@
   padding: 10px 10px;
   border-radius: 6px;
   margin-left: 20px;
-  width: 20%;
+  width: 25%;
   background-color: yellow;
+  justify-content: center;
 }
 
 .SB2 {
@@ -64,7 +65,7 @@
   font-weight: bold;
   border: none;
   outline: none;
-  margin-left: 15px;
+  margin-right: auto;
 }
 
 .RecipeListContainer {
@@ -74,4 +75,47 @@
   padding: 30px;
   gap: 20px;
   justify-content: space-evenly;
+}
+
+.RecipeContainer{
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  width: 300px;
+  box-shadow: 0 3px 10px 0 #aaa;  
+}
+
+.CoverImage {
+  height: 200px;
+}
+
+.RecipeName {
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+  margin: 10px 0;
+}
+
+.IngredientsText {
+  font-size: 18px;
+  border: solid 1px green;
+  color: black;
+  margin-bottom: 12px;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: green;
+  text-align: center;
+}
+
+.SeeMoreText {
+  font-size: 18px;
+  border: solid 1px blue;
+  color: black;
+  margin-bottom: 12px;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: blue;
+  text-align: center;
 }
