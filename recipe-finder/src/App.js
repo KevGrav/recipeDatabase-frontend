@@ -1,6 +1,6 @@
 import './App.css'
 import React, { useState } from "react"
-//import Axios from "axios"
+//import axios from "axios"
 const APP_ID = "a889f78e"
 const APP_KEY = "3ffab496cec4b6ed3496b78b560d5950"
 
@@ -12,7 +12,7 @@ function App() {
   const [recipeList, updateRecipeList] = useState([]);
   const [timeoutId, updateTimeoutId] = useState();
   const fetchData = async (searchString) => {
-    const foundRecipes = await Axios.get(
+    const foundRecipes = await axios.get(
       `https://api.edamam.com/search?q=${searchString}&app_id=${APP_ID}&app_key=${APP_KEY}`,
     );
     updateRecipeList(foundRecipes.data.hits);
