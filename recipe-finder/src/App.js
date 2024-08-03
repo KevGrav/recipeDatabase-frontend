@@ -2,18 +2,6 @@ import './App.css'
 import React, { useState } from "react"
 import axios from "axios"
 
-const RecipeComponent = (props) => {
-  const [show, setShow] = useState("");
-
-  const { label, image, ingredients, url } = props.recipe;
-  return (
-          <div className='RecipeContainer'>
-      
-          </div>
-  );
-};
-
-
 function App() {
   const [searchQuery, updateSearchQuery] = useState("");
   const [recipeList, updateRecipeList] = useState([]);
@@ -24,7 +12,10 @@ function App() {
       updateRecipeList(foundRecipes.data.hits);
   }
 
-  function newSearchQuery, setState] = useState(searchQuery)
+  // button function newSearchQuery
+  function newSearchQuery = {
+    // some how update searchQuery with new string (search) from SearchInput line below
+  }
   
   
 
