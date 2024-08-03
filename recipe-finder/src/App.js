@@ -1,29 +1,32 @@
 import './App.css'
 import React, { useState } from "react"
-//import axios from "axios"
-const APP_ID = "a889f78e"
-const APP_KEY = "3ffab496cec4b6ed3496b78b560d5950"
+import axios from "axios"
 
+const RecipeComponent = (props) => {
+  const [show, setShow] = useState("");
 
+  const { label, image, ingredients, url } = props.recipe;
+  return (
+          <div className='RecipeContainer'>
+      
+          </div>
+  );
+};
 
 
 function App() {
   const [searchQuery, updateSearchQuery] = useState("");
   const [recipeList, updateRecipeList] = useState([]);
-  const [timeoutId, updateTimeoutId] = useState();
-  const fetchData = async (searchString) => {
+  
+  const fetchRecipes = async () => {
     const foundRecipes = await axios.get(
-      `https://api.edamam.com/search?q=${searchString}&app_id=${APP_ID}&app_key=${APP_KEY}`,
-    );
-    updateRecipeList(foundRecipes.data.hits);
-  };
+      `localhost:3000/api/recipes/get-recipes/`, {searchString: searchQuery})
+      updateRecipeList(foundRecipes.data.hits);
+  }
 
-  const onTextChange = (e) => {
-    clearTimeout(timeoutId);
-    updateSearchQuery(e.target.value);
-    const timeout = setTimeout(() => fetchData(e.target.value), 500);
-    updateTimeoutId(timeout);
-  };
+  function newSearchQuery, setState] = useState(searchQuery)
+  
+  
 
   return (
     <div className='Container'>
@@ -34,7 +37,8 @@ function App() {
       <div className='SearchBox'>
         <div className='SearchInput'>
           <label for="SearchInput">Search Recipe  </label>
-            <input type="text" value={searchQuery} onChange={onTextChange}></input>
+            <input type="text" value={searchQuery}></input>
+            <button className='newSearchQuery' onClick={newSearchQuery}>find</button>
         </div>
       </div>
       <div className='SB2'>
@@ -43,18 +47,17 @@ function App() {
       <div className='SB3'>
       <button id="pantryItems">Pantry Items</button>
       </div>
+    </div>
+    <div className='RecipeListContainer'>
+        {recipeList?.length ? (
+          recipeList.map((recipe, index) => (
+            <RecipeComponent key={index} recipe={recipe.recipe} />
+          ))
+        ) : (
+          <img className='Placeholder' src="/react-recipe-finder/hamburger.svg" alt="hamburger pic"/>
+        )}
       </div>
-      
-    <div className= 'RecipeListContainer'>
-        <div className='RecipeContainer'>
-          <img className='CoverImage' src= "https://edamam-product-images.s3.amazonaws.com/web...f446c624e96cca2301f2142142aab9d4df9b41b9b8cb39656" alt="Shrimp Scampi Pic"/>
-          <span className='RecipeName'>Shrimp Scampi</span>
-          <span className='IngredientsText'>Ingredients</span>
-          <span className='SeeMoreText'>See Complete Recipe</span>
-        </div>
-    </div>
-      
-    </div>
+  </div>
     
   )
 }
