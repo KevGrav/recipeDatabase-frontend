@@ -1,19 +1,24 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import './RecipeList.css'
+//import RecipeComponent from './RecipeComponent'
 
-
+useEffect(() =>{
+  async function getRecipes(){
+    try {
+      const foundRecipes = await axios.get(`http://localhost:3000/api/recipes/get-recipes/`, {searchString: searchQuery})
+      setRecipeList(foundRecipes.data.hits)
+    }catch (error){
+      console.log(error)
+    }
+  }
+  getRecipes()
+},[])
 
 
 
 function RecipeList() {
-  const [recipeList, setRecipeList] = useState([
-      {
-        image: "img src='redCabbage.svg'",
-        title: "Red Cabbage",
-        Ingredients: "Ingredients",
-        SeeCompleteRecipe: "See Complete Recipe"
-      }
-  ])
+  const [recipeList, setRecipeList] = useState([])
   const [searchQuery, setSearchQuery] = useState("")
 
 
@@ -53,14 +58,18 @@ function RecipeList() {
               ) : (
               <img className='Placeholder' src="/recipe-finder/food.svg" alt="food pic"/>
             )} */}
-                {/* return(
-              <li key={recipe.id}>
-              {recipe.name}234
-              </li>
-                )
-              } )
-            } */}
-
+               
+            {/* <ul>
+          {
+            recipeList.map(recipe =>{
+              return(
+                <li onClick = {()=>handleTodoDone(setRecipeList.id)} style={{textDecoration: todo.done ? "line-through" : "none"}} key={todo.id}>
+                  {todo.todo}
+                </li>
+              )
+            })
+          }
+        </ul>    */}
           
         </div>
     </div>
