@@ -6,7 +6,7 @@ import './RecipeList.css'
 
 
 function RecipeList() {
-  const [RecipeList, setRecipeList] = useState([
+  const [recipeList, setRecipeList] = useState([
       {
         image: "img src='redCabbage.svg'",
         title: "Red Cabbage",
@@ -17,9 +17,22 @@ function RecipeList() {
 
   ])
 
-  const [RecipeInput, setRecipeInput] = useState("")
+  const [recipeInput, setRecipeInput] = useState("")
   return (
-    <div>RecipeList</div>
+    <div>
+      <ul>
+      {
+        recipeList.map(recipe =>{  //I don't have a list, I need to fill the recipe containers
+          return(
+            <li key={recipe.id}>
+            {recipe.name}234
+            </li>
+          )
+        } )
+      }
+
+      </ul>
+    </div>
   )
 }
 
